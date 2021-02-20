@@ -1,0 +1,21 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+
+{% block title_block %} Register {% endblock %}
+
+{% block body_block %}
+  <div class="container bg-light rounded-lg p-5 m-3">
+    {% if registered %}
+      <h1>Thank you for your registeration</h1>
+    {% else %}
+      <h1>Registeration Form</h1>
+
+      <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" name="" value="Register">
+      </form>
+    {% endif %}
+  </div>
+{% endblock %}
